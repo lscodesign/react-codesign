@@ -1,4 +1,4 @@
-import { PropsObject } from "./attributes-types";
+import { PropsObject } from "../../types/attributes-types";
 import { FlexProps } from "./flex-types";
 
 export const flexProps: PropsObject<FlexProps> = {

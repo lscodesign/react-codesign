@@ -1,4 +1,4 @@
-import { PropsObject } from "./attributes-types";
+import { PropsObject } from "../../types/attributes-types";
 import { GridProps } from "./grid-types";
 
 export const gridProps: PropsObject<GridProps> = {

@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { getThemeColors } from "../../context/ThemeContext";
 import { ButtonProps, CustomProps } from "./button-types";
 import { getApperance, getSize } from "./button-styles";
-import sizes from "../../styles/sizes";
+import { Loader } from "../loading";
+import { sizes } from "../../styles";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['scheme', 'variant', '_styles'].includes(prop)
@@ -38,7 +39,14 @@ const Button: React.FC<ButtonProps> = ({
         ${getSize(size)}
       `}
     >
-      {children}
+      {loading ?
+        <>
+          <Loader />
+          {loadingText ? (typeof loadingText === 'string' ? loadingText : children) : ''}
+        </>
+        :
+        children
+      }
     </StyledButton>
   );
 }
