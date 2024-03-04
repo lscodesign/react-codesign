@@ -1,26 +1,30 @@
 import React, { createRef, useEffect } from "react";
 import styled from "styled-components";
 import { fontSizes, sizes } from "../../styles";
-import { getThemeColors } from "../../context/ThemeContext";
 
-const StyledInput = styled.input`
+const StyledInput = styled.input.withConfig({
+  shouldForwardProp: (prop: string) => !['isFocused', 'onBackspace'].includes(prop)
+})`
+  background-color: transparent;
   border: 1px solid black;
   border-radius: ${sizes.border_radius};
+  color: ${props => props.color};
   font-size: ${fontSizes.body};
   padding: 0;
   margin: 0;
   height: 3rem;
   width: 2.5rem;
   text-align: center;
-`
+`;
 
-const Input: React.FC<{
+export interface InputBoxProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'color' | 'style' | 'id' | 'className'> {
   isFocused: boolean;
   onBackspace: (value: string) => void;
   onChange: (value: string) => void;
   value: string;
-}> = (props) => {
-  const colors = getThemeColors();
+}
+
+const Input: React.FC<InputBoxProps> = (props) => {
   const ref = createRef<HTMLInputElement>();
 
   useEffect(() => {
@@ -49,6 +53,7 @@ const Input: React.FC<{
 
   return (
     <StyledInput
+      {...props}
       ref={ref}
       type="text"
       inputMode="numeric"
@@ -58,7 +63,6 @@ const Input: React.FC<{
       onKeyDown={handleKeyDown}
       onPaste={handlePaste}
       value={props.value}
-      style={{ borderColor: colors.primary as string }}
     />
   )
 }
