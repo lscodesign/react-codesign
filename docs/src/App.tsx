@@ -1,8 +1,9 @@
-import { Button, Flex } from "react-codesign";
+import { Button, Flex, InputCode } from "react-codesign";
 
 function App() {
   return (
-    <Flex height={"100vh"} alignItems="center" justifyContent="center">
+    <Flex gap={10} direction="column" height={"100vh"} alignItems="center" justifyContent="center">
+      <InputCode />
       <Button scheme="primary">
         Nome
       </Button>
