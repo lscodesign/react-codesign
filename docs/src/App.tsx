@@ -22,7 +22,7 @@ function App() {
         Digite o Códio recebido
       </Text>
       <InputCode />
-      <Button>
+      <Button size="lg">
         Nome
       </Button>
     </Flex>

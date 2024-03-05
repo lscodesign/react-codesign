@@ -11,7 +11,7 @@ import {
 } from "../components/toast";
 import { generateUniqueId } from "../utils";
 
-type Toast = ToastProps & {
+type ToastType = ToastProps & {
   /**
    * toast position
    */
@@ -24,12 +24,12 @@ type Toast = ToastProps & {
   duration?: number;
 };
 
-type ToastWithId = Toast & {
+type ToastWithId = ToastType & {
   id: string;
 }
 
 export interface ToastContextProps {
-  show: (params: Toast) => ToastWithId;
+  show: (params: ToastType) => ToastWithId;
   update: (id: string, params: ToastProps) => void;
   remove: (id: string) => void;
 }
@@ -45,7 +45,7 @@ export const ToastProvider: React.FC<{ children?: ReactNode }> = (props) => {
     remove: removeToastById,
   }
 
-  function showToast(props: Toast): ToastWithId {
+  function showToast(props: ToastType): ToastWithId {
     const id = generateUniqueId();
     const toast = { ...props, id };
 

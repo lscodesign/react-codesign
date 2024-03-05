@@ -80,7 +80,6 @@ export const InputCode: React.FC<InputCodeProps> = ({
           style={{ borderColor: props.borderColor || props.color || getColorVar('primary') }}
         />
       )}
-      <div />
     </Flex>
   )
 }

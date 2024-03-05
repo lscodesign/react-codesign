@@ -66,6 +66,12 @@ export const sizeMap: Record<SizeType, SizePropsType> = {
     height: sizes.height_md,
     minWidth: '4rem',
     padding: sizes.md,
+  },
+  lg: {
+    fontSize: 'body',
+    height: sizes.height_lg,
+    minWidth: '6rem',
+    padding: sizes.lg,
   }
 }
 

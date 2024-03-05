@@ -4,7 +4,8 @@ import { CompoundColor } from "../../styles/colors";
 export type SizeType =
   | 'xs'
   | 'sm'
-  | 'md';
+  | 'md'
+  | 'lg';
 
 export type SizePropsType = {
   fontSize: keyof FontSize;
