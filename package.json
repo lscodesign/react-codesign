@@ -1,6 +1,6 @@
 {
   "name": "react-codesign",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -23,7 +23,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8"
@@ -31,6 +31,9 @@
   "devDependencies": {
     "@types/react": "^18.2.58",
     "@types/react-dom": "^18.2.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.8",
     "typescript": "^5.3.3"
   }
 }

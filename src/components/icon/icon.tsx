@@ -14,7 +14,7 @@ const sizeMap = {
   lg: 30
 }
 
-export default function Icon(props: IconProps) {
+export const Icon: React.FC<IconProps> = (props: IconProps) => {
   const Component: React.FC<SVGProps<SVGSVGElement>> = icons[props.name];
 
   const size = typeof props.size === 'string' ?
