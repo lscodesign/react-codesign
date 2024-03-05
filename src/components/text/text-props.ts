@@ -28,7 +28,8 @@ export const textProps: PropsObject<CustomTextProps> = {
   },
   size: {
     attribute: 'font-size',
-    type: 'px'
+    ignore: true,
+    value: 'body'
   },
   sizeAdjust: {
     attribute: 'font-size-adjust',

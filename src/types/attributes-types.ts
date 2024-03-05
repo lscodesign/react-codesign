@@ -1,8 +1,9 @@
-type ObjectType = {
+type ObjectType<T> = {
   attribute: string;
   prop?: string;
+  ignore?: boolean;
   type?: string;
-  value?: string;
+  value?: T[keyof T];
 }
 
-export type PropsObject<T> = Record<keyof T, ObjectType>;
+export type PropsObject<T> = Record<keyof T, ObjectType<T>>;

@@ -1,4 +1,4 @@
-import { CompoundColor } from "../../styles";
+import { CompoundColor } from "../../styles/colors";
 import { IconName } from "../icon";
 
 export interface ToastProps {

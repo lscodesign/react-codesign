@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { getThemeColors } from "../../context/ThemeContext";
 import { ButtonProps, CustomProps } from "./button-types";
 import { getApperance, getSize } from "./button-styles";
 import { Loader } from "../loading";
@@ -29,13 +28,11 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'solid',
   ...props
 }) => {
-  const colors = getThemeColors();
-
   return (
     <StyledButton
       {...props}
       _styles={`
-        ${getApperance(colors, scheme, variant)}
+        ${getApperance(scheme, variant)}
         ${getSize(size)}
       `}
     >

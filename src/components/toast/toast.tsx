@@ -5,12 +5,11 @@ import { getApperance } from "./toast-styles";
 import { ToastProps } from "./toast-types";
 import { Loader } from "../loading";
 import { Text } from "../text";
-import { fontSizes, sizes } from "../../styles";
-import { getThemeColors } from "../../context/ThemeContext";
+import { sizes } from "../../styles";
 
 const Toast = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['_styles'].includes(prop)
-})<{ _styles: string }>`
+  shouldForwardProp: (prop) => !['type'].includes(prop)
+})<ToastProps>`
   display: flex;
   align-items: center;
   border-radius: ${sizes.border_radius};
@@ -18,11 +17,11 @@ const Toast = styled.div.withConfig({
   padding: ${sizes.md};
   min-height: 40px;
   min-width: 250px;
-  ${props => props._styles};
+  ${props => getApperance(props.type!)};
 `;
 
 export default (props: ToastProps) => (
-  <Toast _styles={getApperance(getThemeColors(), props.type || 'primary')}>
+  <Toast type={props.type || 'primary'}>
     {props.loading ?
       <Loader />
       :
@@ -30,7 +29,7 @@ export default (props: ToastProps) => (
         name={props.icon || 'plus'}
       />
     }
-    <Text as="span" size={fontSizes.body}>
+    <Text as="span" size="body">
       {props.message || 'Toast message'}
     </Text>
   </Toast>

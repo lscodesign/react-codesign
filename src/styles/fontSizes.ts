@@ -1,4 +1,21 @@
-export default {
+export type FontSizeType =
+  | 'footnote'
+  | 'caption'
+  | 'body'
+  | 'subtitle2'
+  | 'subtitle1'
+  | 'h6'
+  | 'h5'
+  | 'h4'
+  | 'h3'
+  | 'h2'
+  | 'h1';
+
+export type FontSize = {
+  [key in FontSizeType]?: number | string;
+}
+
+export const fontSizes: Record<FontSizeType, string> = {
   /* 10px */
   footnote: '0.625rem',
   /* 14px */
@@ -21,4 +38,4 @@ export default {
   h2: '4.5rem',
   /* 84px */
   h1: '5.25rem',
-}
+};

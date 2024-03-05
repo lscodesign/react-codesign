@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import { BaseProps } from "../layout/base-types";
+import { FontSizeType } from "../../styles";
 
 export interface CustomTextProps {
   /**
@@ -43,7 +44,7 @@ export interface CustomTextProps {
   /**
    * font-size
    */
-  size?: CSSProperties['fontSize'];
+  size?: FontSizeType;
   /**
    * font-size-adjust
    */

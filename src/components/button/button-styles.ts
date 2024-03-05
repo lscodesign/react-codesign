@@ -1,20 +1,12 @@
 
 import { SizePropsType, SizeType, VariantType } from "./button-types";
-import { ColorType, CompoundColor } from "../../styles/colors";
-import fontSizes from "../../styles/fontSizes";
+import { CompoundColor } from "../../styles/colors";
+import { getColorVar, getFontSizeVar } from "../../utils";
 import sizes from "../../styles/sizes";
 
-export function getColors(colors: ColorType, scheme: CompoundColor) {
-  const _scheme = colors[scheme];
-
-  return {
-    background: typeof _scheme === 'object' ? _scheme?.background : _scheme,
-    text: typeof _scheme === 'object' ? _scheme.text : colors.text_primary_contrast
-  }
-}
-
-export function getApperance(colors: ColorType, scheme: CompoundColor, variant: VariantType) {
-  const { background, text } = getColors(colors, scheme);
+export function getApperance(scheme: CompoundColor, variant: VariantType) {
+  const background = getColorVar(scheme);
+  const text = `var(${getColorVar(scheme, true)}-text, ${getColorVar('text_primary_contrast')})`
 
   const border = `border: 1px solid ${background};`
 
@@ -58,19 +50,19 @@ export function getApperance(colors: ColorType, scheme: CompoundColor, variant: 
 
 export const sizeMap: Record<SizeType, SizePropsType> = {
   xs: {
-    fontSize: fontSizes.caption,
+    fontSize: 'caption',
     height: sizes.height_xs,
     minWidth: '4rem',
     padding: sizes.xs
   },
   sm: {
-    fontSize: fontSizes.body,
+    fontSize: 'body',
     height: sizes.height_sm,
     minWidth: '4rem',
     padding: sizes.sm,
   },
   md: {
-    fontSize: fontSizes.body,
+    fontSize: 'body',
     height: sizes.height_md,
     minWidth: '4rem',
     padding: sizes.md,
@@ -79,7 +71,7 @@ export const sizeMap: Record<SizeType, SizePropsType> = {
 
 export function getSize(size: SizeType) {
   return `
-    font-size: ${sizeMap[size].fontSize};
+    font-size: ${getFontSizeVar(sizeMap[size].fontSize)};
     height: ${sizeMap[size].height};
     padding-inline: ${sizeMap[size].padding};
   `

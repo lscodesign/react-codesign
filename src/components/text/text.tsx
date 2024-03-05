@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TextProps } from "./text-types";
-import { parseAttributes } from "../../utils";
+import { getFontSizeVar, parseAttributes } from "../../utils";
 import { baseProps } from "../layout/base-props";
 import { textProps } from "./text-props";
 
@@ -10,4 +10,5 @@ export const Text = styled.p.withConfig({
   shouldForwardProp: (prop: string) => !Object.keys(propsObj).includes(prop)
 }) <TextProps>`
   ${(props) => parseAttributes(propsObj, props)}
+  font-size: ${(props) => getFontSizeVar(props.size || 'body')};
 `;

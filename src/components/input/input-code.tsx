@@ -3,7 +3,7 @@ import Input from "./input-code-box";
 import { Flex } from "../layout";
 import { FlexProps } from "../layout/flex-types";
 import { sizes } from "../../styles";
-import { getThemeColors } from "../../context/ThemeContext";
+import { getColorVar } from "../../utils";
 
 interface InputCodeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>, FlexProps {
   borderColor?: string;
@@ -16,7 +16,6 @@ export const InputCode: React.FC<InputCodeProps> = ({
   onChange,
   ...props
 }) => {
-  const colors = getThemeColors();
   const inputs = Array(length || 6).fill("");
 
   const [index, setIndex] = useState(0);
@@ -73,12 +72,12 @@ export const InputCode: React.FC<InputCodeProps> = ({
       {code.map((value, i) =>
         <Input
           key={i}
-          color={props.color || colors.text_primary as string}
+          color={props.color || getColorVar('text_primary')}
           isFocused={index === i}
           onBackspace={(value) => handleBack(i, value)}
           onChange={(value) => handleChange(i, value)}
           value={value}
-          style={{ borderColor: props.borderColor || props.color || colors.primary as string }}
+          style={{ borderColor: props.borderColor || props.color || getColorVar('primary') }}
         />
       )}
       <div />

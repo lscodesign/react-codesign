@@ -1,3 +1,4 @@
+import { FontSize } from "../../styles";
 import { CompoundColor } from "../../styles/colors";
 
 export type SizeType =
@@ -6,7 +7,7 @@ export type SizeType =
   | 'md';
 
 export type SizePropsType = {
-  fontSize: string;
+  fontSize: keyof FontSize;
   height: string;
   padding: string;
   minWidth: string;

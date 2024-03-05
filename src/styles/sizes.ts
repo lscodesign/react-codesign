@@ -12,3 +12,20 @@ export default {
   height_md: '40px',
   height_lg: '48px',
 }
+
+type SizeType =
+  | 'border_radius'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xlg'
+  | 'xxlg'
+  | 'height_xs'
+  | 'height_sm'
+  | 'height_md'
+  | 'height_lg'
+
+export type Size = {
+  [key in SizeType]?: number | string;
+}

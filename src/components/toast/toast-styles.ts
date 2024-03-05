@@ -1,11 +1,9 @@
-import { ColorType } from "../../styles";
-import { ToastProps } from "./toast-types";
+import { CompoundColor } from "../../styles";
+import { getColorVar } from "../../utils";
 
-export function getApperance(colors: ColorType, type: ToastProps['type']) {
-  const scheme = colors[type!];
-
-  const background = typeof scheme === 'object' ? scheme.background : scheme;
-  const text = typeof scheme === 'object' ? scheme.text : colors.text_primary_contrast
+export function getApperance(type: CompoundColor) {
+  const background = getColorVar(type);
+  const text = `var(${getColorVar(type, true)}-text, ${getColorVar('text_primary_contrast')})`
 
   return `
     background-color: ${background};
