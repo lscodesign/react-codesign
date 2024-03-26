@@ -6,6 +6,7 @@ import { sizes } from "../../styles";
 import { getColorVar } from "../../utils";
 
 interface InputCodeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>, FlexProps {
+  autoFocus?: boolean;
   borderColor?: string;
   length?: number,
   onChange?: (value: string) => void;
@@ -18,7 +19,7 @@ export const InputCode: React.FC<InputCodeProps> = ({
 }) => {
   const inputs = Array(length || 6).fill("");
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(props.autoFocus ? 0 : -1);
   const [code, setCode] = useState<string[]>(inputs);
 
   useEffect(() => {
